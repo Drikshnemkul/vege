@@ -34,7 +34,7 @@
 .slider__fixed--height {
   align-items: center;
   display: flex;
-  height: 800px;
+  height: 500px;
 }
 .slider--one .slide {
     align-items: center;
@@ -51,7 +51,7 @@
 .slider__inner h1 {
     color: #030303;
     font-family: Old Standard TT;
-    font-size: 89px;
+    font-size: 60px;
     margin-bottom: 14px;
     margin-top: 31px;
     text-transform: uppercase;

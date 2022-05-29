@@ -15,8 +15,9 @@ if($check_user>0){
 	echo "email_present";
 }else{
 	if($password===$password2){
+		$encryptedPassword = md5($password);
 		$added_on=date('Y-m-d h:i:s');
-		mysqli_query($con,"insert into users(name,email,mobile,password,added_on) values('$name','$email','$mobile','$password','$added_on')");
+		mysqli_query($con,"insert into users(name,email,mobile,password,added_on) values('$name','$email','$mobile','$encryptedPassword','$added_on')");
 		echo "insert";
 	}else{
 		echo "password_wrong";

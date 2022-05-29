@@ -128,7 +128,7 @@ h2, .h2 {
     font-weight: 400;
 }
 h3, .h3 {
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 400;
 }
 h4, .h4 {
@@ -612,7 +612,7 @@ textarea:focus {
 .ptb--70 { padding: 70px 0 }
 .ptb--80 { padding: 80px 0 }
 .ptb--90 { padding: 90px 0 }
-.ptb--100 { padding: 100px 0 }
+.ptb--100 { padding: 10px 0 }
 .ptb--110 { padding: 110px 0 }
 .ptb--120 { padding: 120px 0 }
 .ptb--130 { padding: 130px 0 }
