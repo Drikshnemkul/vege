@@ -23,10 +23,8 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 		$row=mysqli_fetch_assoc($res);
 		$categories_id=$row['categories_id'];
 		$name=$row['name'];
-		$mrp=$row['mrp'];
 		$price=$row['price'];
 		$qty=$row['qty'];
-		$short_desc=$row['short_desc'];
 		$description=$row['description'];
 		$meta_title=$row['meta_title'];
 		$meta_desc=$row['meta_desc'];
@@ -40,10 +38,8 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 if(isset($_POST['submit'])){
 	$categories_id=get_safe_value($con,$_POST['categories_id']);
 	$name=get_safe_value($con,$_POST['name']);
-	$mrp=get_safe_value($con,$_POST['mrp']);
 	$price=get_safe_value($con,$_POST['price']);
 	$qty=get_safe_value($con,$_POST['qty']);
-	$short_desc=get_safe_value($con,$_POST['short_desc']);
 	$description=get_safe_value($con,$_POST['description']);
 	$meta_title=get_safe_value($con,$_POST['meta_title']);
 	$meta_desc=get_safe_value($con,$_POST['meta_desc']);
@@ -126,10 +122,6 @@ if(isset($_POST['submit'])){
 									<input type="text" name="name" placeholder="Enter product name" class="form-control" required value="<?php echo $name?>">
 								</div>
 								
-								<div class="form-group">
-									<label for="categories" class=" form-control-label">MRP</label>
-									<input type="text" name="mrp" placeholder="Enter product mrp" class="form-control" required value="<?php echo $mrp?>">
-								</div>
 								
 								<div class="form-group">
 									<label for="categories" class=" form-control-label">Price</label>
@@ -147,11 +139,6 @@ if(isset($_POST['submit'])){
 								</div>
 								
 								<div class="form-group">
-									<label for="categories" class=" form-control-label">Short Description</label>
-									<textarea name="short_desc" placeholder="Enter product short description" class="form-control" required><?php echo $short_desc?></textarea>
-								</div>
-								
-								<div class="form-group">
 									<label for="categories" class=" form-control-label">Description</label>
 									<textarea name="description" placeholder="Enter product description" class="form-control" required><?php echo $description?></textarea>
 								</div>
@@ -161,10 +148,6 @@ if(isset($_POST['submit'])){
 									<textarea name="meta_title" placeholder="Enter product meta title" class="form-control"><?php echo $meta_title?></textarea>
 								</div>
 								
-								<div class="form-group">
-									<label for="categories" class=" form-control-label">Meta Description</label>
-									<textarea name="meta_desc" placeholder="Enter product meta description" class="form-control"><?php echo $meta_description?></textarea>
-								</div>
 								
 								<div class="form-group">
 									<label for="categories" class=" form-control-label">Meta Keyword</label>
