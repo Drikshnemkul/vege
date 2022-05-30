@@ -195,7 +195,7 @@
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(23.7286, 90.3854),
                 map: map,
-                title: 'Ramble!',
+                title: 'kathmandu!',
                 icon: 'images/icons/map.png',
                 animation:google.maps.Animation.BOUNCE
 

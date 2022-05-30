@@ -2,7 +2,7 @@
 require('top.php');
 ?>
 
- <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+ <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -44,7 +44,6 @@ require('top.php');
 											foreach($_SESSION['cart'] as $key=>$val){
 											$productArr=get_product($con,'','',$key);
 											$pname=$productArr[0]['name'];
-											$mrp=$productArr[0]['mrp'];
 											$price=$productArr[0]['price'];
 											$image=$productArr[0]['image'];
 											$qty=$val['qty'];
@@ -52,17 +51,13 @@ require('top.php');
 											<tr>
 												<td class="product-thumbnail"><a href="#"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$image?>"  /></a></td>
 												<td class="product-name"><a href="#"><?php echo $pname?></a>
-													<ul  class="pro__prize">
-														<li class="old__prize"><?php echo $mrp?></li>
-														<li><?php echo $price?></li>
-													</ul>
 												</td>
 												<td class="product-price"><span class="amount"><?php echo $price?></span></td>
 												<td class="product-quantity"><input type="number" id="<?php echo $key?>qty" value="<?php echo $qty?>" />
 												<br/><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','update')">update</a>
 												</td>
 												<td class="product-subtotal"><?php echo $qty*$price?></td>
-												<td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i class="icon-trash icons"></i></a></td>
+												<td class="product-remove" name="Remove_Item"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i class="icon-trash icons"></i></a></td>
 											</tr>
 											<?php } } ?>
                                     </tbody>

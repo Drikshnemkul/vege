@@ -1,7 +1,7 @@
 <?php 
 require('top.php');					
 ?>
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -25,7 +25,9 @@ require('top.php');
                 <div class="row">
                     <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
                         <div class="map-contacts--2">
-                            <div id="googleMap"></div>
+                            <div id="googleMap">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d68388.21062910644!2d85.28004641223774!3d27.70288833251244!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1653814666571!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
@@ -36,7 +38,7 @@ require('top.php');
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">our address</h2>
-                                <p>666 5th Ave New York, NY, United </p>
+                                <p>kathmandu </p>
                             </div>
                         </div>
                         <div class="address">
@@ -45,7 +47,7 @@ require('top.php');
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">openning hour</h2>
-                                <p>666 5th Ave New York, NY, United </p>
+                                <p>24 hrs </p>
                             </div>
                         </div>
 
@@ -55,7 +57,7 @@ require('top.php');
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">Phone Number</h2>
-                                <p>123-6586-587456</p>
+                                <p>9841526389</p>
                             </div>
                         </div>
                     </div>      
@@ -96,8 +98,8 @@ require('top.php');
         </section>
         <!-- End Contact Area -->
 		<!-- Google Map js -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo "></script>
-    <script src="js/contact-map.js"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo "></script>
+    <script src="js/contact-map.js"></script> -->
     <script>
         // When the window has finished loading create our google map below
         google.maps.event.addDomListener(window, 'load', init);
@@ -296,7 +298,7 @@ require('top.php');
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(23.7286, 90.3854),
                 map: map,
-                title: 'Ramble!',
+                title: 'kathmandu!',
                 icon: 'images/icons/map-2.png',
                 animation:google.maps.Animation.BOUNCE
 

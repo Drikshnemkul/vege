@@ -43,13 +43,13 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 								<form id="login-form" method="post">
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="login_email" id="login_email" placeholder="User Email" style="width:100%">
+											<input type="text" name="login_email" id="login_email" placeholder="User Email" style="width:100%"autocomplete="off">
 										</div>
 										<span class="field_error" id="login_email_error"></span>
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="password" name="login_password" id="login_password" placeholder="Password" style="width:100%">
+											<input type="password" name="login_password" id="login_password" placeholder="Password" style="width:100%"autocomplete="off">
 										</div>
 										<span class="field_error" id="login_password_error"></span>
 									</div>
@@ -78,31 +78,31 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 								<form id="register-form" method="post">
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="name" id="name" placeholder="User Name" style="width:100%">
+											<input type="text" name="name" id="name" placeholder="User Name" style="width:100%" autocomplete="off">
 										</div>
 										<span class="field_error" id="name_error"></span>
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="email" id="email" placeholder="Email" style="width:100%">
+											<input type="text" name="email" id="email" placeholder="Email" style="width:100%" autocomplete="off">
 										</div>
 										<span class="field_error" id="email_error"></span>
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="mobile" id="mobile" placeholder="Mobile" style="width:100%">
+											<input type="text" name="mobile" id="mobile" placeholder="Mobile" style="width:100%" autocomplete="off">
 										</div>
 										<span class="field_error" id="mobile_error"></span>
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="password" name="password" id="password" placeholder="Password" style="width:100%">
+											<input type="password" name="password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" style="width:100%" autocomplete="off">
 										</div>
 										<span class="field_error" id="password_error"></span>
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="password" name="password2" id="password2" placeholder="Confirm Password" style="width:100%">
+											<input type="password" name="password2" id="password2" placeholder="Confirm Password" style="width:100%" autocomplete="off">
 										</div>
 										<span class="field_error" id="password_error1"></span>
 									</div>

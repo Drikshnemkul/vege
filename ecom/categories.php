@@ -47,7 +47,7 @@ if($cat_id>0){
 <div class="body__overlay"></div>
         
         <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -56,7 +56,7 @@ if($cat_id>0){
                                 <nav class="bradcaump-inner">
                                   <a class="breadcrumb-item" href="index.php">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active">Products</span>
+                                  <a class="breadcrumb-item" href="categories.php?id=<?php echo $get_product['0']['categories_id']?>"><?php echo $get_product['0']['categories']?></a>
                                 </nav>
                             </div>
                         </div>
@@ -103,18 +103,17 @@ if($cat_id>0){
 												<div class="fr__product__inner">
 													<h4><a href="product-details.html"><?php echo $list['name']?></a></h4>
 													<ul class="fr__pro__prize">
-														<li class="old__prize"><?php echo $list['mrp']?></li>
-														<li><?php echo $list['price']?></li>
+														<li>Rs <?php echo $list['price']?></li>
 													</ul>
 												</div>
 											</div>
 										</div>
-										<?php } ?>
-                                    </div>
-							   </div>
-                            </div>
-                        </div>
-                    </div>
+											<?php } ?>
+                  </div>
+							  </div>
+               </div>
+              </div>
+            </div>
 					<?php } else { 
 						echo "Data not found";
 					} ?>

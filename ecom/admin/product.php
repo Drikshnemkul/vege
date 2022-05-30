@@ -39,14 +39,14 @@ $res=mysqli_query($con,$sql);
 					  <table class="table ">
 						 <thead>
 							<tr>
-							   <th class="serial">#</th>
+							   <th class="serial">S.no</th>
 							   <th>ID</th>
 							   <th>Categories</th>
 							   <th>Name</th>
 							   <th>Image</th>
 							   <th>Price</th>
 							   <th>Qty</th>
-							   <th></th>
+							   <th>status</th>
 							</tr>
 						 </thead>
 						 <tbody>
@@ -59,9 +59,9 @@ $res=mysqli_query($con,$sql);
 							   <td><?php echo $row['categories']?></td>
 							   <td><?php echo $row['name']?></td>
 							   <td><img src="../media/product/<?php echo $row['image']; ?>" ></td>
-							   <td><?php echo $row['mrp']?></td>
 							   <td><?php echo $row['price']?></td>
 							   <td><?php echo $row['qty']?></td>
+								
 							   <td>
 								<?php
 								if($row['status']==1){

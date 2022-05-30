@@ -39,7 +39,7 @@ $res=mysqli_query($con,$sql);
 					  <table class="table ">
 						 <thead>
 							<tr>
-							   <th class="serial">#</th>
+							   <th class="serial">S.n</th>
 							   <th>ID</th>
 							   <th>Categories</th>
 							   <th></th>

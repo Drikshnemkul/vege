@@ -21,7 +21,7 @@ if(isset($_GET['id'])){
 ?>
 
  <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk3.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -65,10 +65,8 @@ if(isset($_GET['id'])){
                             <div class="ht__product__dtl">
                                 <h2><?php echo $get_product['0']['name']?></h2>
                                 <ul  class="pro__prize">
-                                    <li class="old__prize"><?php echo $get_product['0']['mrp']?></li>
-                                    <li><?php echo $get_product['0']['price']?></li>
+                                    <li>Rs <?php echo $get_product['0']['price']?></li>
                                 </ul>
-                                <p class="pro__info"><?php echo $get_product['0']['short_desc']?></p>
                                 <div class="ht__pro__desc">
                                     <div class="sin__desc">
                                         <p><span>Availability:</span> In Stock</p>
@@ -99,7 +97,7 @@ if(isset($_GET['id'])){
                                     </div>
 									
                                 </div>
-								<a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
+								<a class="fr__btn" href="javascript:void(0)" name="Add_To_Cart" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
                             </div>
                         </div>
                     </div>

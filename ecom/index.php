@@ -14,7 +14,7 @@
                                         <!-- <h2>collection 2018</h2> -->
                                         <h1>Nature Has Always Cared For Us!</h1>
                                         <div class="cr__btn">
-                                            <a href="cart.html">Shop Now</a>
+                                            <a href="categories.php?id=2">Shop Now</a>
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +62,6 @@
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
                             <h2 class="title__line">New Arrivals</h2>
-                            <p>But I must explain to you how all this mistaken idea</p>
                         </div>
                     </div>
                 </div>
@@ -85,8 +84,8 @@
                                     <div class="fr__product__inner">
                                         <h4><a href="product.php?id=<?php echo $list['id']?>"><?php echo $list['name']?></a></h4>
                                         <ul class="fr__pro__prize">
-                                            <li class="old__prize"><?php echo $list['mrp']?></li>
-                                            <li><?php echo $list['price']?></li>
+                                        
+                                            <li>Rs <?php echo $list['price']?></li>
                                         </ul>
                                     </div>
                                 </div>
