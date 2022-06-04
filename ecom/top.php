@@ -16,7 +16,8 @@ $totalProduct=$obj->totalProduct();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Ecom Website</title>
+    <title>Online vegetable store</title>
+    <link rel="icon" type="image/png" href="images/logo/logo1.png">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">

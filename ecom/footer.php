@@ -20,7 +20,6 @@
 
                                             <li><a href="#"><i class="icon-social-google icons"></i></a></li>
 
-                                            <li><a href="#"><i class="icon-social-linkedin icons"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -47,10 +46,10 @@
                                 <h2 class="title__line--2">Customer Care</h2>
                                 <div class="ft__inner">
                                     <ul class="ft__list">
-                                        <li><a href="#">Regular on time</a></li>
-                                        <li><a href="cart.html">My Cart</a></li>
-                                        <li><a href="#">Login</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="#">Regular </a></li>
+                                        <li><a href="cart.html">On Time</a></li>
+                                        <li><a href="#">Always Care</a></li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -62,11 +61,10 @@
                                 <h2 class="title__line--2">Our service</h2>
                                 <div class="ft__inner">
                                     <ul class="ft__list">
-                                        <li><a href="#">My Account</a></li>
-                                        <li><a href="cart.html">My Cart</a></li>
-                                        <li><a href="#">Login</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="login.php">Login</a></li>
+                                        <li><a href="cart.php">My Cart</a></li>
+                                        <li><a href="checkout.php">Checkout</a></li>
+                                        <li><a href="contact.php">Contact us</a></li>
                                     </ul>
                                 </div>
                             </div>

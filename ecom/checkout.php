@@ -117,7 +117,7 @@ if(isset($_POST['submit'])){
 }
 ?>
 
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -228,11 +228,11 @@ if(isset($_POST['submit'])){
 																<input type="text" name="city" placeholder="City/State" required>
 															</div>
 														</div>
-														<div class="col-md-6">
+														<!-- <div class="col-md-6">
 															<div class="single-input">
 																<input type="text" name="pincode" placeholder="Post code/ zip" required>
 															</div>
-														</div>
+														</div> -->
 														
 													</div>
 												
@@ -245,7 +245,7 @@ if(isset($_POST['submit'])){
 											<div class="paymentinfo">
 												<div class="single-method">
 													COD <input type="radio" name="payment_type" value="COD" required/>
-													&nbsp;&nbsp;PayU <input type="radio" name="payment_type" value="payu" required/>
+													&nbsp;&nbsp;esewa <input type="radio" name="payment_type" value="esewa" required/>
 												</div>
 												<div class="single-method">
 												  

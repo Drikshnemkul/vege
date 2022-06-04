@@ -21,5 +21,24 @@ if($type=='update'){
 	$obj->updateProduct($pid,$qty);
 }
 
-echo $obj->totalProduct();
+echo $obj->totalProduct();{
+	if($type=='add'){
+echo"<script>
+          alert('Item  Added To Cart');
+          window.location.href='cart.php';
+        </script>";
+      }
+			else if($type=='remove'){
+				echo"<script>
+          alert('Item  Removed From Cart');
+          window.location.href='cart.php';
+        </script>";
+			}
+			else if($type=='update'){
+				echo"<script>
+          alert('Item  Updated To Cart');
+          window.location.href='cart.php';
+        </script>";
+			}
+		}
 ?>

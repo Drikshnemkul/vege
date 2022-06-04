@@ -69,7 +69,9 @@ if(isset($_GET['id'])){
                                 </ul>
                                 <div class="ht__pro__desc">
                                     <div class="sin__desc">
-                                        <p><span>Availability:</span> In Stock</p>
+                                        <p><span>Availability:</span> <?php if($get_product['0']['qty']==0){
+                                            echo 'out of stock';
+                                        }else{ echo 'in stock';}?></p>
                                     </div>
 									<div class="sin__desc">
                                         <p><span>Qty:</span> 
