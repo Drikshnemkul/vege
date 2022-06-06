@@ -106,7 +106,7 @@ if($cat_id>0){
 														<li>Rs <?php echo $list['price']?></li>
 													</ul>
 												</div>
-												<p><a class="fr__btn" href="product.php?id=<?php echo $list['id']; ?>">Add to Cart</a></p>
+												<p><a class="fr__btn" href="product.php?id=<?php echo $list['id']; ?>">Product Details</a></p>
 											</div>
 										</div>
 											<?php } ?>
