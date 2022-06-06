@@ -48,12 +48,12 @@ if(isset($_POST['submit'])){
 	
 	unset($_SESSION['cart']);
 	
-	if($payment_type=='payu'){
+	if($payment_type=='esewa'){
 		$MERCHANT_KEY = "gtKFFx"; 
 		$SALT = "eCwWELxi";
 		$hash_string = '';
-		//$PAYU_BASE_URL = "https://secure.payu.in";
-		$PAYU_BASE_URL = "https://test.payu.in";
+		//$ESEWA_BASE_URL = "https://secure.payu.in";
+		$ESEWA_BASE_URL = "https://uat.esewa.com.np/epay/main";
 		$action = '';
 		$posted = array();
 		if(!empty($_POST)) {
@@ -94,11 +94,11 @@ if(isset($_POST['submit'])){
 			}
 			$hash_string .= $SALT;
 			$hash = strtolower(hash('sha512', $hash_string));
-			$action = $PAYU_BASE_URL . '/_payment';
+			$action = $ESEWA_BASE_URL . '/_payment';
 		  }
 		} elseif(!empty($posted['hash'])) {
 		  $hash = $posted['hash'];
-		  $action = $PAYU_BASE_URL . '/_payment';
+		  $action = $ESEWA_BASE_URL . '/_payment';
 		}
 
 
@@ -169,7 +169,7 @@ if(isset($_POST['submit'])){
 																<span class="field_error" id="login_password_error"></span>
                                                             </div>
 															
-                                                            <p class="require">* Required fields</p>
+                                                            <p class="require">* Please login to your account.</p>
                                                             <div class="dark-btn">
                                                                 <button type="button" class="fv-btn" onclick="user_login()">Login</button>
                                                             </div>

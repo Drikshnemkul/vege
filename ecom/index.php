@@ -84,9 +84,9 @@
                                     <div class="fr__product__inner">
                                         <h4><a href="product.php?id=<?php echo $list['id']?>"><?php echo $list['name']?></a></h4>
                                         <ul class="fr__pro__prize">
-                                        
-                                            <li>Rs <?php echo $list['price']?></li>
+                                        <li>Rs <?php echo $list['price']?></li>
                                         </ul>
+                                        <p><a href="product.php?id=<?php echo $list['id']; ?>">Add to Cart</a></p>
                                     </div>
                                 </div>
                             </div>
