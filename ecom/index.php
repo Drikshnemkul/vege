@@ -86,7 +86,7 @@
                                         <ul class="fr__pro__prize">
                                         <li>Rs <?php echo $list['price']?></li>
                                         </ul>
-                                        <p><a href="product.php?id=<?php echo $list['id']; ?>">Add to Cart</a></p>
+                                        <p><a class="fr__btn" href="product.php?id=<?php echo $list['id']; ?>">Detail</a></p>
                                     </div>
                                 </div>
                             </div>
