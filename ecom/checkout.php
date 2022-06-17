@@ -13,8 +13,8 @@ $cart_total=0;
 if(isset($_POST['submit'])){
 	$address=get_safe_value($con,$_POST['address']);
 	$city=get_safe_value($con,$_POST['city']);
-	$pincode=get_safe_value($con,$_POST['pincode']);
 	$payment_type=get_safe_value($con,$_POST['payment_type']);
+
 	$user_id=$_SESSION['USER_ID'];
 	foreach($_SESSION['cart'] as $key=>$val){
 		$productArr=get_product($con,'','',$key);
@@ -25,16 +25,17 @@ if(isset($_POST['submit'])){
 	}
 	$total_price=$cart_total;
 	$payment_status='pending';
-	if($payment_type=='cod'){
+
+	if($payment_type=='COD'){
 		$payment_status='success';
-	}
+	
 	$order_status='1';
 	$added_on=date('Y-m-d h:i:s');
 	
 	$txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 		
 	
-	mysqli_query($con,"insert into `order`(user_id,address,city,pincode,payment_type,payment_status,order_status,added_on,total_price,txnid) values('$user_id','$address','$city','$pincode','$payment_type','$payment_status','$order_status','$added_on','$total_price','$txnid')");
+	mysqli_query($con,"insert into `order`(user_id,address,city,payment_type,payment_status,order_status,added_on,total_price,txnid) values('$user_id','$address','$city','$payment_type','$payment_status','$order_status','$added_on','$total_price','$txnid')");
 	
 	$order_id=mysqli_insert_id($con);
 	
@@ -47,74 +48,33 @@ if(isset($_POST['submit'])){
 	}
 	
 	unset($_SESSION['cart']);
-	
-	if($payment_type=='esewa'){
-		$MERCHANT_KEY = "gtKFFx"; 
-		$SALT = "eCwWELxi";
-		$hash_string = '';
-		//$ESEWA_BASE_URL = "https://secure.payu.in";
-		$ESEWA_BASE_URL = "https://uat.esewa.com.np/epay/main";
-		$action = '';
-		$posted = array();
-		if(!empty($_POST)) {
-		  foreach($_POST as $key => $value) {    
-			$posted[$key] = $value; 
-		  }
-		}
-		
-		$userArr=mysqli_fetch_assoc(mysqli_query($con,"select * from users where id='$user_id'"));
-		
-		$formError = 0;
-		$posted['txnid']=$txnid;
-		$posted['amount']=$total_price;
-		$posted['firstname']=$userArr['name'];
-		$posted['email']=$userArr['email'];
-		$posted['phone']=$userArr['mobile'];
-		$posted['productinfo']="productinfo";
-		$posted['key']=$MERCHANT_KEY ;
-		$hash = '';
-		$hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
-		if(empty($posted['hash']) && sizeof($posted) > 0) {
-		  if(
-				  empty($posted['key'])
-				  || empty($posted['txnid'])
-				  || empty($posted['amount'])
-				  || empty($posted['firstname'])
-				  || empty($posted['email'])
-				  || empty($posted['phone'])
-				  || empty($posted['productinfo'])
-				 
-		  ) {
-			$formError = 1;
-		  } else {    
-			$hashVarsSeq = explode('|', $hashSequence);
-			foreach($hashVarsSeq as $hash_var) {
-			  $hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
-			  $hash_string .= '|';
-			}
-			$hash_string .= $SALT;
-			$hash = strtolower(hash('sha512', $hash_string));
-			$action = $ESEWA_BASE_URL . '/_payment';
-		  }
-		} elseif(!empty($posted['hash'])) {
-		  $hash = $posted['hash'];
-		  $action = $ESEWA_BASE_URL . '/_payment';
-		}
+}
 
-
-		$formHtml ='<form method="post" name="payuForm" id="payuForm" action="'.$action.'"><input type="hidden" name="key" value="'.$MERCHANT_KEY.'" /><input type="hidden" name="hash" value="'.$hash.'"/><input type="hidden" name="txnid" value="'.$posted['txnid'].'" /><input name="amount" type="hidden" value="'.$posted['amount'].'" /><input type="hidden" name="firstname" id="firstname" value="'.$posted['firstname'].'" /><input type="hidden" name="email" id="email" value="'.$posted['email'].'" /><input type="hidden" name="phone" value="'.$posted['phone'].'" /><textarea name="productinfo" style="display:none;">'.$posted['productinfo'].'</textarea><input type="hidden" name="surl" value="'.SITE_PATH.'payment_complete.php" /><input type="hidden" name="furl" value="'.SITE_PATH.'payment_fail.php"/><input type="submit" style="display:none;"/></form>';
-		echo $formHtml;
-		echo '<script>document.getElementById("payuForm").submit();</script>';
+	else if($payment_type=='esewa'){?>
+		<form class="esewa" action="https://uat.esewa.com.np/epay/main" method="post" id="esewa_form" >
+			<input value="<?php echo $final_total;?>" name="tAmt" type="hidden">
+			<input value="<?php echo $table_total_price;?>" name="amt" type="hidden">
+			<input value="<?php echo $shipping_cost;?>" name="pdc" type="hidden">
+			<input value="0" name="txAmt" type="hidden">
+			<input value="0" name="psc" type="hidden">
+			<input value="EPAYTEST" name="scd" type="hidden">
+			<input value="<?php echo $payment_id;?>" name="pid" type="hidden">
+			<input value="http://localhost/digi/payment/esewa/esewa_payment_success.php" type="hidden" name="su">
+			<input value="http://localhost/digi/payment/esewa/esewa_payment_failed.php" type="hidden" name="fu">
+			<div class="col-md-12 form-group">
+					<button type ="submit" class="btn btn-primary"  name="form1">
+			</div>
+	</form><?
 	}else{	
 
-		?>
-		<script>
-			window.location.href='thank_you.php';
-		</script>
+		// ?>
+		// <script>
+		// 	window.location.href='thank_you.php';
+		// </script>
 		<?php
-	}	
-	
-}
+	}
+}	
+
 ?>
 
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
@@ -161,22 +121,22 @@ if(isset($_POST['submit'])){
                                                             <h5 class="checkout-method__title">Login</h5>
                                                             <div class="single-input">
                                                                 <input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
-																<span class="field_error" id="login_email_error"></span>
+																																	<span class="field_error" id="login_email_error"></span>
                                                             </div>
 															
                                                             <div class="single-input">
                                                                 <input type="password" name="login_password" id="login_password" placeholder="Your Password*" style="width:100%">
-																<span class="field_error" id="login_password_error"></span>
+																																<span class="field_error" id="login_password_error"></span>
                                                             </div>
 															
                                                             <p class="require">* Please login to your account.</p>
                                                             <div class="dark-btn">
                                                                 <button type="button" class="fv-btn" onclick="user_login()">Login</button>
                                                             </div>
-															<div class="form-output login_msg">
-																<p class="form-messege field_error"></p>
-															</div>
-                                                        </form>
+																														<div class="form-output login_msg">
+																															<p class="form-messege field_error"></p>
+																														</div>
+                           														 	</form>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -185,20 +145,20 @@ if(isset($_POST['submit'])){
                                                             <h5 class="checkout-method__title">Register</h5>
                                                             <div class="single-input">
                                                                 <input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
-																<span class="field_error" id="name_error"></span>
+																																<span class="field_error" id="name_error"></span>
                                                             </div>
-															<div class="single-input">
-                                                                <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
-																<span class="field_error" id="email_error"></span>
-                                                            </div>
+																														<div class="single-input">
+																															<input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
+																															<span class="field_error" id="email_error"></span>
+																														</div>
 															
                                                             <div class="single-input">
                                                                 <input type="text" name="mobile" id="mobile" placeholder="Your Mobile*" style="width:100%">
-																<span class="field_error" id="mobile_error"></span>
+																																<span class="field_error" id="mobile_error"></span>
                                                             </div>
-															<div class="single-input">
-                                                                <input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
-																<span class="field_error" id="password_error"></span>
+																														<div class="single-input">
+																																<input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
+																																<span class="field_error" id="password_error"></span>
                                                             </div>
                                                             <div class="dark-btn">
                                                                 <button type="button" class="fv-btn" onclick="user_register()">Register</button>
@@ -228,11 +188,6 @@ if(isset($_POST['submit'])){
 																<input type="text" name="city" placeholder="City/State" required>
 															</div>
 														</div>
-														<!-- <div class="col-md-6">
-															<div class="single-input">
-																<input type="text" name="pincode" placeholder="Post code/ zip" required>
-															</div>
-														</div> -->
 														
 													</div>
 												
