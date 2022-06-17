@@ -57,7 +57,6 @@ if(!isset($_SESSION['USER_LOGIN'])){
                                                 <td class="product-name">
 												<?php echo $row['address']?><br/>
 												<?php echo $row['city']?><br/>
-												<?php echo $row['pincode']?>
 												</td>
 												<td class="product-name"><?php echo $row['payment_type']?></td>
 												<td class="product-name"><?php echo ucfirst($row['payment_status'])?></td>
