@@ -42,7 +42,7 @@ if(isset($_GET['id'])){
         </div>
         <!-- End Bradcaump area -->
         <!-- Start Product Details Area -->
-        <section class="htc__product__details bg__white ptb--100">
+        <section class="htc__product__details bg__white ptb--20">
             <!-- Start Product Details Top -->
             <div class="htc__product__details__top">
                 <div class="container">
