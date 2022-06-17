@@ -50,7 +50,7 @@ if(isset($_POST['submit'])){
 	unset($_SESSION['cart']);
 }
 
-	else if($payment_type=='esewa'){?>
+	 if($payment_type=='esewa'){?>
 		<form class="esewa" action="https://uat.esewa.com.np/epay/main" method="post" id="esewa_form" >
 			<input value="<?php echo $final_total;?>" name="tAmt" type="hidden">
 			<input value="<?php echo $table_total_price;?>" name="amt" type="hidden">
@@ -59,18 +59,18 @@ if(isset($_POST['submit'])){
 			<input value="0" name="psc" type="hidden">
 			<input value="EPAYTEST" name="scd" type="hidden">
 			<input value="<?php echo $payment_id;?>" name="pid" type="hidden">
-			<input value="http://localhost/digi/payment/esewa/esewa_payment_success.php" type="hidden" name="su">
-			<input value="http://localhost/digi/payment/esewa/esewa_payment_failed.php" type="hidden" name="fu">
+			<input value="http://127.0.0.1/php/ecom//esewa_payment_success.php" type="hidden" name="su">
+			<input value="http://127.0.0.1/php/ecom//esewa/esewa_payment_failed.php" type="hidden" name="fu">
 			<div class="col-md-12 form-group">
 					<button type ="submit" class="btn btn-primary"  name="form1">
 			</div>
 	</form><?
 	}else{	
 
-		// ?>
-		// <script>
-		// 	window.location.href='thank_you.php';
-		// </script>
+		?>
+		<script>
+			window.location.href='thank_you.php';
+		</script>
 		<?php
 	}
 }	
