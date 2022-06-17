@@ -28,6 +28,7 @@ function user_register(){
 	jQuery('.field_error').html('');
 	var name=jQuery("#name").val();
 	var email=jQuery("#email").val();
+	var address=jQuery("#address").val();
 	var mobile=jQuery("#mobile").val();
 	var password=jQuery("#password").val();
 	var password2=jQuery("#password2").val();
@@ -37,6 +38,9 @@ function user_register(){
 		is_error='yes';
 	}if(email==""){
 		jQuery('#email_error').html('Please enter email');
+		is_error='yes';
+	}if(address==""){
+		jQuery('#address_error').html('Please enter address');
 		is_error='yes';
 	}if(mobile==""){
 		jQuery('#mobile_error').html('Please enter mobile');
@@ -52,7 +56,7 @@ function user_register(){
 		jQuery.ajax({
 			url:'register_submit.php',
 			type:'post',
-			data:'name='+name+'&email='+email+'&mobile='+mobile+'&password='+password+'&password2='+password2,
+			data:'name='+name+'&email='+email+'&address='+address+'&mobile='+mobile+'&password='+password+'&password2='+password2,
 			success:function(result){
 				if(result=='email_present'){
 					jQuery('#email_error').html('Email id already present');
