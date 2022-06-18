@@ -2,14 +2,11 @@
 require('top.inc.php');
 $categories_id='';
 $name='';
-$mrp='';
 $price='';
 $qty='';
 $image='';
-$short_desc	='';
 $description	='';
 $meta_title	='';
-$meta_description	='';
 $meta_keyword='';
 
 $msg='';
@@ -27,7 +24,6 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 		$qty=$row['qty'];
 		$description=$row['description'];
 		$meta_title=$row['meta_title'];
-		$meta_desc=$row['meta_desc'];
 		$meta_keyword=$row['meta_keyword'];
 	}else{
 		header('location:product.php');
@@ -42,7 +38,6 @@ if(isset($_POST['submit'])){
 	$qty=get_safe_value($con,$_POST['qty']);
 	$description=get_safe_value($con,$_POST['description']);
 	$meta_title=get_safe_value($con,$_POST['meta_title']);
-	$meta_desc=get_safe_value($con,$_POST['meta_desc']);
 	$meta_keyword=get_safe_value($con,$_POST['meta_keyword']);
 	
 	$res=mysqli_query($con,"select * from product where name='$name'");
@@ -77,15 +72,15 @@ if(isset($_POST['submit'])){
 			if($_FILES['image']['name']!=''){
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 				move_uploaded_file($_FILES['image']['tmp_name'],'../media/product/'.$image);
-				$update_sql="update product set categories_id='$categories_id',name='$name',price='$price',qty='$qty',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword',image='$image' where id='$id'";
+				$update_sql="update product set categories_id='$categories_id',name='$name',price='$price',qty='$qty',description='$description',meta_title='$meta_title',meta_keyword='$meta_keyword',image='$image' where id='$id'";
 			}else{
-				$update_sql="update product set categories_id='$categories_id',name='$name',price='$price',qty='$qty',description='$description',meta_title='$meta_title',meta_desc='$meta_desc',meta_keyword='$meta_keyword' where id='$id'";
+				$update_sql="update product set categories_id='$categories_id',name='$name',price='$price',qty='$qty',description='$description',meta_title='$meta_title',meta_keyword='$meta_keyword' where id='$id'";
 			}
 			mysqli_query($con,$update_sql);
 		}else{
 			$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 			move_uploaded_file($_FILES['image']['tmp_name'],'../media/product/'.$image);
-			mysqli_query($con,"insert into product(categories_id,name,price,qty,description,meta_title,meta_desc,meta_keyword,status,image) values('$categories_id','$name','$price','$qty','$description','$meta_title','$meta_desc','$meta_keyword',1,'$image')");
+			mysqli_query($con,"insert into product(categories_id,name,price,qty,description,meta_title,meta_keyword,status,image) values('$categories_id','$name','$price','$qty','$description','$meta_title','$meta_keyword',1,'$image')");
 		}
 		header('location:product.php');
 		die();
