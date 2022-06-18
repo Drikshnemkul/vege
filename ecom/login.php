@@ -43,7 +43,7 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 								<form id="login-form" method="post">
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="text" name="login_email" id="login_email" placeholder="User Email" style="width:100%"autocomplete="off">
+											<input type="email" name="login_email" id="login_email" placeholder="User Email" style="width:100%"autocomplete="off">
 										</div>
 										<span class="field_error" id="login_email_error"></span>
 									</div>
@@ -84,7 +84,7 @@ if(isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
 									</div>
 									<div class="single-contact-form">
 										<div class="contact-box name">
-											<input type="email" name="email" id="email" placeholder="Email" style="width:100%" autocomplete="off">
+											<input type="email" name="email" id="email" placeholder="Email" style="width:100%"  autocomplete="off">
 										</div>
 										<span class="field_error" id="email_error"></span>
 									</div>

@@ -1,12 +1,13 @@
 <?php
 require('connection.inc.php');
 require('functions.inc.php');
+require('top.php');
 if( isset($_REQUEST['oid']) &&
 	isset( $_REQUEST['amt']) &&
 	isset( $_REQUEST['refId'])
 	)
 {
-	$sql = "SELECT * FROM orders WHERE invoice_no = '".$_REQUEST['oid']."'"	;
+	$sql = "SELECT * FROM orders WHERE order_id= '".$_REQUEST['oid']."'"	;
 	$result = mysqli_query( $conn, $sql);
 	if(  $result )
 	{
@@ -20,7 +21,7 @@ if( isset($_REQUEST['oid']) &&
 			$data =[
 			'amt'=> $order['total'],
 			'rid'=>  $_REQUEST['refId'],
-			'pid'=>  $order['invoice_no'],
+			'pid'=>  $order['order_id'],
 			'scd'=> 'epay_payment'
 			];
 
@@ -58,10 +59,6 @@ function get_xml_node_value($node, $xml) {
     }	  
 
    return false;
+
 }
-	<script>
-		window.location.href='thank_you.php';
-	</script>
-	<?php	
-}
-?>
+	

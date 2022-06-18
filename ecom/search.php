@@ -14,7 +14,7 @@ if($str!=''){
 <div class="body__overlay"></div>
         
         <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
+        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk6.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -60,8 +60,7 @@ if($str!=''){
 												<div class="fr__product__inner">
 													<h4><a href="product-details.html"><?php echo $list['name']?></a></h4>
 													<ul class="fr__pro__prize">
-														<li class="old__prize"><?php echo $list['mrp']?></li>
-														<li><?php echo $list['price']?></li>
+														<li>Rs <?php echo $list['price']?> per kg</li>
 													</ul>
 												</div>
 											</div>

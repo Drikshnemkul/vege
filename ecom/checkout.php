@@ -13,7 +13,6 @@ $cart_total=0;
 if(isset($_POST['submit'])){
 	$address=get_safe_value($con,$_POST['address']);
 	$city=get_safe_value($con,$_POST['city']);
-
 	$payment_type=get_safe_value($con,$_POST['payment_type']);
 	$user_id=$_SESSION['USER_ID'];
 	foreach($_SESSION['cart'] as $key=>$val){
@@ -30,10 +29,7 @@ if(isset($_POST['submit'])){
 	}
 	$order_status='1';
 	$added_on=date('Y-m-d h:i:s');
-	
-	$txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 		
-	
 	mysqli_query($con,"insert into `order`(user_id,address,city,pincode,payment_type,payment_status,order_status,added_on,total_price,txnid) values('$user_id','$address','$city','$pincode','$payment_type','$payment_status','$order_status','$added_on','$total_price','$txnid')");
 	
 	$order_id=mysqli_insert_id($con);
@@ -89,7 +85,7 @@ if(isset($_POST['submit'])){
 }
 ?>
 
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -132,7 +128,7 @@ if(isset($_POST['submit'])){
                                                         <form id="login-form" method="post">
                                                             <h5 class="checkout-method__title">Login</h5>
                                                             <div class="single-input">
-                                                              <input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
+                                                              <input type="email" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
 																															<span class="field_error" id="login_email_error"></span>
                                                             </div>
 															
@@ -154,13 +150,13 @@ if(isset($_POST['submit'])){
                                                 <div class="col-md-6">
                                                     <div class="checkout-method__login">
                                                         <form action="#">
-                                                            <h5 class="checkout-method__title">Register</h5>
+                                                            <h5 class="checkout-method__title">Registeration</h5>
                                                             <div class="single-input">
                                                               <input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
 																															<span class="field_error" id="name_error"></span>
                                                             </div>
 																														<div class="single-input">
-                                                          	  <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
+                                                          	  <input type="email" name="email" id="email" placeholder="Your Email*" style="width:100%">
 																															<span class="field_error" id="email_error"></span>
                                                             </div>
 																														<div class="single-input">
