@@ -13,8 +13,8 @@ $cart_total=0;
 if(isset($_POST['submit'])){
 	$address=get_safe_value($con,$_POST['address']);
 	$city=get_safe_value($con,$_POST['city']);
-	$payment_type=get_safe_value($con,$_POST['payment_type']);
 
+	$payment_type=get_safe_value($con,$_POST['payment_type']);
 	$user_id=$_SESSION['USER_ID'];
 	foreach($_SESSION['cart'] as $key=>$val){
 		$productArr=get_product($con,'','',$key);
@@ -25,17 +25,16 @@ if(isset($_POST['submit'])){
 	}
 	$total_price=$cart_total;
 	$payment_status='pending';
-
-	if($payment_type=='COD'){
+	if($payment_type=='cod'){
 		$payment_status='success';
-	
+	}
 	$order_status='1';
 	$added_on=date('Y-m-d h:i:s');
 	
 	$txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 		
 	
-	mysqli_query($con,"insert into `order`(user_id,address,city,payment_type,payment_status,order_status,added_on,total_price,txnid) values('$user_id','$address','$city','$payment_type','$payment_status','$order_status','$added_on','$total_price','$txnid')");
+	mysqli_query($con,"insert into `order`(user_id,address,city,pincode,payment_type,payment_status,order_status,added_on,total_price,txnid) values('$user_id','$address','$city','$pincode','$payment_type','$payment_status','$order_status','$added_on','$total_price','$txnid')");
 	
 	$order_id=mysqli_insert_id($con);
 	
@@ -48,23 +47,36 @@ if(isset($_POST['submit'])){
 	}
 	
 	unset($_SESSION['cart']);
-}
+	
+	if($payment_type=='payu'){
 
-	 if($payment_type=='esewa'){?>
-		<form class="esewa" action="https://uat.esewa.com.np/epay/main" method="post" id="esewa_form" >
-			<input value="<?php echo $final_total;?>" name="tAmt" type="hidden">
-			<input value="<?php echo $table_total_price;?>" name="amt" type="hidden">
-			<input value="<?php echo $shipping_cost;?>" name="pdc" type="hidden">
-			<input value="0" name="txAmt" type="hidden">
-			<input value="0" name="psc" type="hidden">
+		$posted = array();
+		if(!empty($_POST)) {
+		  foreach($_POST as $key => $value) {    
+			$posted[$key] = $value; 
+		  }
+		}
+		
+		$userArr=mysqli_fetch_assoc(mysqli_query($con,"select * from users where id='$user_id'"));
+		
+		$formError = 0;
+		$posted['tAmt']=$tAmt;
+		$posted['amount']=$total_price;?>
+		
+		<form action="https://uat.esewa.com.np/epay/main" method="POST">
+			<input value="100" name="tAmt" type="hidden">
+			<input value="90" name="amt" type="hidden">
+			<input value="5" name="txAmt" type="hidden">
+			<input value="2" name="psc" type="hidden">
+			<input value="3" name="pdc" type="hidden">
 			<input value="EPAYTEST" name="scd" type="hidden">
-			<input value="<?php echo $payment_id;?>" name="pid" type="hidden">
-			<input value="http://127.0.0.1/php/ecom//esewa_payment_success.php" type="hidden" name="su">
-			<input value="http://127.0.0.1/php/ecom//esewa/esewa_payment_failed.php" type="hidden" name="fu">
-			<div class="col-md-12 form-group">
-					<button type ="submit" class="btn btn-primary"  name="form1">
-			</div>
-	</form><?
+			<input value="ee2c3ca1-696b-4cc5-a6be-2c40d929d453" name="pid" type="hidden">
+			<input value="'http://127.0.0.1/php/ecom/esewa_payment_success" type="hidden" name="su">
+			<input value="http://127.0.0.1/php/ecom/esewa_payment_failed" type="hidden" name="fu">
+			<input value="Submit" type="submit">
+			</form>
+
+	<?php
 	}else{	
 
 		?>
@@ -72,12 +84,12 @@ if(isset($_POST['submit'])){
 			window.location.href='thank_you.php';
 		</script>
 		<?php
-	}
-}	
-
+	}	
+	
+}
 ?>
 
-<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/bk1.jpg) no-repeat scroll center center / cover ;">
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
             <div class="ht__bradcaump__wrap">
                 <div class="container">
                     <div class="row">
@@ -121,22 +133,22 @@ if(isset($_POST['submit'])){
                                                             <h5 class="checkout-method__title">Login</h5>
                                                             <div class="single-input">
                                                                 <input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
-																																	<span class="field_error" id="login_email_error"></span>
+																<span class="field_error" id="login_email_error"></span>
                                                             </div>
 															
                                                             <div class="single-input">
                                                                 <input type="password" name="login_password" id="login_password" placeholder="Your Password*" style="width:100%">
-																																<span class="field_error" id="login_password_error"></span>
+																<span class="field_error" id="login_password_error"></span>
                                                             </div>
 															
-                                                            <p class="require">* Please login to your account.</p>
+                                                            <p class="require">* Required fields</p>
                                                             <div class="dark-btn">
                                                                 <button type="button" class="fv-btn" onclick="user_login()">Login</button>
                                                             </div>
-																														<div class="form-output login_msg">
-																															<p class="form-messege field_error"></p>
-																														</div>
-                           														 	</form>
+															<div class="form-output login_msg">
+																<p class="form-messege field_error"></p>
+															</div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -145,20 +157,20 @@ if(isset($_POST['submit'])){
                                                             <h5 class="checkout-method__title">Register</h5>
                                                             <div class="single-input">
                                                                 <input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
-																																<span class="field_error" id="name_error"></span>
+																<span class="field_error" id="name_error"></span>
                                                             </div>
-																														<div class="single-input">
-																															<input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
-																															<span class="field_error" id="email_error"></span>
-																														</div>
+															<div class="single-input">
+                                                                <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
+																<span class="field_error" id="email_error"></span>
+                                                            </div>
 															
                                                             <div class="single-input">
                                                                 <input type="text" name="mobile" id="mobile" placeholder="Your Mobile*" style="width:100%">
-																																<span class="field_error" id="mobile_error"></span>
+																<span class="field_error" id="mobile_error"></span>
                                                             </div>
-																														<div class="single-input">
-																																<input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
-																																<span class="field_error" id="password_error"></span>
+															<div class="single-input">
+                                                                <input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
+																<span class="field_error" id="password_error"></span>
                                                             </div>
                                                             <div class="dark-btn">
                                                                 <button type="button" class="fv-btn" onclick="user_register()">Register</button>
@@ -200,7 +212,7 @@ if(isset($_POST['submit'])){
 											<div class="paymentinfo">
 												<div class="single-method">
 													COD <input type="radio" name="payment_type" value="COD" required/>
-													&nbsp;&nbsp;esewa <input type="radio" name="payment_type" value="esewa" required/>
+													&nbsp;&nbsp;esewa <input type="radio" name="payment_type" value="payu" required/>
 												</div>
 												<div class="single-method">
 												  
@@ -233,7 +245,7 @@ if(isset($_POST['submit'])){
                                     </div>
                                     <div class="single-item__content">
                                         <a href="#"><?php echo $pname?></a>
-                                        <span class="price">Rs <?php echo $price*$qty?></span>
+                                        <span class="price"><?php echo $price*$qty?></span>
                                     </div>
                                     <div class="single-item__remove">
                                         <a href="javascript:void(0)" onclick="manage_cart('<?php echo $key?>','remove')"><i class="icon-trash icons"></i></a>
