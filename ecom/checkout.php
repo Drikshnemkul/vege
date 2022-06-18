@@ -132,22 +132,22 @@ if(isset($_POST['submit'])){
                                                         <form id="login-form" method="post">
                                                             <h5 class="checkout-method__title">Login</h5>
                                                             <div class="single-input">
-                                                                <input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
-																<span class="field_error" id="login_email_error"></span>
+                                                              <input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
+																															<span class="field_error" id="login_email_error"></span>
                                                             </div>
 															
                                                             <div class="single-input">
-                                                                <input type="password" name="login_password" id="login_password" placeholder="Your Password*" style="width:100%">
-																<span class="field_error" id="login_password_error"></span>
+                                                              <input type="password" name="login_password" id="login_password" placeholder="Your Password*" style="width:100%">
+																															<span class="field_error" id="login_password_error"></span>
                                                             </div>
 															
                                                             <p class="require">* Required fields</p>
                                                             <div class="dark-btn">
-                                                                <button type="button" class="fv-btn" onclick="user_login()">Login</button>
+                                                              <button type="button" class="fv-btn" onclick="user_login()">Login</button>
                                                             </div>
-															<div class="form-output login_msg">
-																<p class="form-messege field_error"></p>
-															</div>
+																													<div class="form-output login_msg">
+																														<p class="form-messege field_error"></p>
+																													</div>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -156,21 +156,28 @@ if(isset($_POST['submit'])){
                                                         <form action="#">
                                                             <h5 class="checkout-method__title">Register</h5>
                                                             <div class="single-input">
-                                                                <input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
-																<span class="field_error" id="name_error"></span>
+                                                              <input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
+																															<span class="field_error" id="name_error"></span>
                                                             </div>
-															<div class="single-input">
-                                                                <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
-																<span class="field_error" id="email_error"></span>
+																														<div class="single-input">
+                                                          	  <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
+																															<span class="field_error" id="email_error"></span>
                                                             </div>
-															
+																														<div class="single-input">
+																															<input type="text" name="address" id="address" placeholder="Address*" style="width:100%">
+																															<span class="field_error" id="address_error"></span>
+																														</div>
                                                             <div class="single-input">
-                                                                <input type="text" name="mobile" id="mobile" placeholder="Your Mobile*" style="width:100%">
-																<span class="field_error" id="mobile_error"></span>
+                                                            	<input type="text" name="mobile" id="mobile" placeholder="Your Mobile*" style="width:100%">
+																															<span class="field_error" id="mobile_error"></span>
                                                             </div>
-															<div class="single-input">
-                                                                <input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
-																<span class="field_error" id="password_error"></span>
+																														<div class="single-input">
+                                                              <input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
+																															<span class="field_error" id="password_error"></span>
+                                                            </div>
+																														<div class="single-input">
+                                                              <input type="password" name="password2" id="password2" placeholder="Confirm Password*" style="width:100%">
+																															<span class="field_error" id="password_error1"></span>
                                                             </div>
                                                             <div class="dark-btn">
                                                                 <button type="button" class="fv-btn" onclick="user_register()">Register</button>
@@ -181,7 +188,7 @@ if(isset($_POST['submit'])){
                                             </div>
                                         </div>
                                     </div>
-									<?php } ?>
+																		<?php } ?>
                                     <div class="<?php echo $accordion_class?>">
                                         Address Information
                                     </div>
