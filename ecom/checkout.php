@@ -215,7 +215,7 @@ if(isset($_POST['submit'])){
 											<div class="paymentinfo">
 												<div class="single-method">
 													COD <input type="radio" name="payment_type" value="COD" required/>
-													&nbsp;&nbsp;esewa <input type="radio" name="payment_type" value="payu" required/>
+													<!-- &nbsp;&nbsp;esewa <input type="radio" name="payment_type" value="payu" required/> -->
 												</div>
 												<div class="single-method">
 												  
