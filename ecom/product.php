@@ -69,25 +69,35 @@ if(isset($_GET['id'])){
                                 </ul>
                                 <div class="ht__pro__desc">
                                     <div class="sin__desc">
-                                        <p><span>Availability:</span> <?php if($get_product['0']['qty']==0){
-                                            echo 'out of stock';
-                                        }else{ echo 'in stock';}?></p>
+                                    <?php
+										$productSoldQtyByProductId=productSoldQtyByProductId($con,$get_product['0']['id']);
+										
+										$pending_qty=$get_product['0']['qty']-$productSoldQtyByProductId;
+										
+										$cart_show='yes';
+										if($get_product['0']['qty']>$productSoldQtyByProductId){
+											$stock='In Stock';			
+										}else{
+											$stock='Not in Stock';
+											$cart_show='';
+										}
+										?>
+                                        <p><span>Availability:</span> <?php echo $stock?></p>
                                     </div>
 									<div class="sin__desc">
+										<?php
+										if($cart_show!=''){
+										?>
                                         <p><span>Qty:</span> 
 										<select id="qty">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-											<option>7</option>
-											<option>8</option>
-											<option>9</option>
-											<option>10</option>
+											<?php
+											for($i=1;$i<=$pending_qty;$i++){
+												echo "<option>$i</option>";
+											}
+											?>
 										</select>
 										</p>
+										<?php } ?>
                                     </div>
                                     <div class="sin__desc align--left">
                                         <p><span>Categories:</span></p>
@@ -99,15 +109,17 @@ if(isset($_GET['id'])){
                                     </div>
 									
                                 </div>
-								<a class="fr__btn" href="javascript:void(0)" name="Add_To_Cart" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
-                            </div>
+                                <?php
+								if($cart_show!=''){
+								?>
+								<a class="fr__btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0']['id']?>','add')">Add to cart</a>
+								<?php } ?>                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- End Product Details Top -->
         </section>
-        <!-- End Product Details Area 
 		<!-- Start Product Description -->
         <section class="htc__produc__decription bg__white">
             <div class="container">
