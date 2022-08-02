@@ -76,7 +76,7 @@ if(isset($_GET['id'])){
 										
 										$cart_show='yes';
 										if($get_product['0']['qty']>$productSoldQtyByProductId){
-											$stock='In Stock';			
+                                            $stock='In Stock';	
 										}else{
 											$stock='Not in Stock';
 											$cart_show='';

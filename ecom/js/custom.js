@@ -36,14 +36,14 @@ function user_register(){
 	if(name==""){
 		jQuery('#name_error').html('Please enter name');
 		is_error='yes';
-	}if(email==""){
-		jQuery('#email_error').html('Please enter email');
+	}if(IsEmail(email)==""){
+		jQuery('#email_error').html('Please enter valid email');
 		is_error='yes';
 	}if(address==""){
 		jQuery('#address_error').html('Please enter address');
 		is_error='yes';
-	}if(mobile==""){
-		jQuery('#mobile_error').html('Please enter mobile');
+	}if(IsMobile(mobile)==""){
+		jQuery('#mobile_error').html('Please enter 10 digit mobile');
 		is_error='yes';
 	}if(password==""){
 		jQuery('#password_error').html('Please enter password');
@@ -70,7 +70,24 @@ function user_register(){
 			}	
 		});
 	}
-	
+}
+
+function IsEmail(email) {
+  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  if(!regex.test(email)) {
+    return false;
+  }else{
+    return true;
+  }
+}
+
+function IsMobile(mobile){
+	var regex = /^[0-9]{10}$/;
+	if(!regex.test(mobile)){
+		return false;
+	}else{
+		return true;
+	}
 }
 
 
